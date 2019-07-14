@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Membership2WebApp.Models.Customer>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Customer</h2>
+@Html.ActionLink("Create New","New","Customer")
+<table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Discount</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var c in Model)
+    {
+        <tr>
+            @*<td>@c.Name</td>*@
+            <td>@Html.ActionLink(c.Name,"Edit","Customer",new {id=c.Id},null)</td>
+            <td>@c.MembershipType.DiscountRate</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
