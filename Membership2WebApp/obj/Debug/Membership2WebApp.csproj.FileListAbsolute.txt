@@ -59,3 +59,9 @@ E:\Files\bitm c\bitm cls\MySelf\Vidly\Membership2WebApp\Membership2WebApp\obj\De
 E:\Files\bitm c\bitm cls\MySelf\Vidly\Membership2WebApp\Membership2WebApp\obj\Debug\Membership2WebApp.Migrations.v3MemTypeAdd.resources
 E:\Files\bitm c\bitm cls\MySelf\Vidly\Membership2WebApp\Membership2WebApp\obj\Debug\Membership2WebApp.Migrations.v4FKeyCusMType.resources
 E:\Files\bitm c\bitm cls\MySelf\Vidly\Membership2WebApp\Membership2WebApp\obj\Debug\Membership2WebApp.Migrations.v5AddAnnotationAtCustomer.resources
+E:\Files\bitm c\bitm cls\MySelf\Vidly\Membership2WebApp\Membership2WebApp\bin\System.Net.Http.Formatting.dll
+E:\Files\bitm c\bitm cls\MySelf\Vidly\Membership2WebApp\Membership2WebApp\bin\System.Web.Http.dll
+E:\Files\bitm c\bitm cls\MySelf\Vidly\Membership2WebApp\Membership2WebApp\bin\System.Web.Http.WebHost.dll
+E:\Files\bitm c\bitm cls\MySelf\Vidly\Membership2WebApp\Membership2WebApp\bin\System.Net.Http.Formatting.xml
+E:\Files\bitm c\bitm cls\MySelf\Vidly\Membership2WebApp\Membership2WebApp\bin\System.Web.Http.xml
+E:\Files\bitm c\bitm cls\MySelf\Vidly\Membership2WebApp\Membership2WebApp\bin\System.Web.Http.WebHost.xml
