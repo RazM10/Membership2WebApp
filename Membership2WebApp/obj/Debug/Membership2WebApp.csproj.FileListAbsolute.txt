@@ -65,3 +65,5 @@ E:\Files\bitm c\bitm cls\MySelf\Vidly\Membership2WebApp\Membership2WebApp\bin\Sy
 E:\Files\bitm c\bitm cls\MySelf\Vidly\Membership2WebApp\Membership2WebApp\bin\System.Net.Http.Formatting.xml
 E:\Files\bitm c\bitm cls\MySelf\Vidly\Membership2WebApp\Membership2WebApp\bin\System.Web.Http.xml
 E:\Files\bitm c\bitm cls\MySelf\Vidly\Membership2WebApp\Membership2WebApp\bin\System.Web.Http.WebHost.xml
+E:\Files\bitm c\bitm cls\MySelf\Vidly\Membership2WebApp\Membership2WebApp\bin\AutoMapper.dll
+E:\Files\bitm c\bitm cls\MySelf\Vidly\Membership2WebApp\Membership2WebApp\bin\AutoMapper.xml

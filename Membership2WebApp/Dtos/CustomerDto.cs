@@ -3,19 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using Membership2WebApp.Models;
 
-namespace Membership2WebApp.Models
+namespace Membership2WebApp.Dtos
 {
-    public class Customer
+    public class CustomerDto
     {
         public int Id { get; set; }
-        //[Range(4,10)]
         [Required]
         public string Name { get; set; }
-        
-        //version4
-        public MembershipType MembershipType { get; set; }
-        [Display(Name = "Membership Type")]
+
         [Required(ErrorMessage = "Select Membership Type")]
         public int MembershipTypeId { get; set; }
     }

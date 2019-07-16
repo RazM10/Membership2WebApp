@@ -6,6 +6,8 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using AutoMapper;
+using Membership2WebApp.App_Start;
 
 namespace Membership2WebApp
 {
@@ -13,6 +15,8 @@ namespace Membership2WebApp
     {
         protected void Application_Start()
         {
+            Mapper.Initialize(c=>c.AddProfile<MappingProfile>());
+
             GlobalConfiguration.Configure(WebApiConfig.Register);
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
