@@ -5,11 +5,12 @@
 
 <h2>Customer</h2>
 @Html.ActionLink("Create New","New","Customer")
-<table class="table table-bordered table-hover">
+<table id="customers" class="table table-bordered table-hover">
     <thead>
     <tr>
         <th>Name</th>
         <th>Discount</th>
+        <th>Delete</th>
     </tr>
     </thead>
     <tbody>
@@ -19,8 +20,28 @@
             @*<td>@c.Name</td>*@
             <td>@Html.ActionLink(c.Name,"Edit","Customer",new {id=c.Id},null)</td>
             <td>@c.MembershipType.DiscountRate</td>
+            <td><button data-customer-id="@c.Id" class="btn-link js-delete">Delete</button></td>
         </tr>
     }
     </tbody>
 </table>
 
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $("#customers .js-delete").on("click", function() {
+                var button = $(this);
+                if (confirm("Want to delete?")) {
+                    $.ajax({
+                        url: "/api/customer/" + button.attr("data-customer-id"),
+                        method: "DELETE",
+                        success: function() {
+                            button.parents("tr").remove();
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}
