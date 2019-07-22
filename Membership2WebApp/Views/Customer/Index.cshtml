@@ -32,15 +32,18 @@
         $(document).ready(function() {
             $("#customers .js-delete").on("click", function() {
                 var button = $(this);
-                if (confirm("Want to delete?")) {
-                    $.ajax({
-                        url: "/api/customer/" + button.attr("data-customer-id"),
-                        method: "DELETE",
-                        success: function() {
-                            button.parents("tr").remove();
-                        }
-                    });
-                }
+                //if (confirm("Want to delete?")) 
+                bootbox.confirm("Want to Delete?", function(result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/api/customer/" + button.attr("data-customer-id"),
+                            method: "DELETE",
+                            success: function() {
+                                button.parents("tr").remove();
+                            }
+                        });
+                    }
+                });
             });
         });
     </script>
