@@ -15,5 +15,7 @@ namespace Membership2WebApp.Dtos
 
         [Required(ErrorMessage = "Select Membership Type")]
         public int MembershipTypeId { get; set; }
+
+        public MembershipTypeDto MembershipType { get; set; }
     }
 }

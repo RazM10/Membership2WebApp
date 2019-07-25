@@ -32,6 +32,11 @@ namespace Membership2WebApp.Controllers
             return View(c);
         }
 
+        public ActionResult Index_Two()
+        {
+            return View();
+        }
+
         public ActionResult Edit(int? id)
         {
             var customer = _context.Customers.SingleOrDefault(x => x.Id == id);
