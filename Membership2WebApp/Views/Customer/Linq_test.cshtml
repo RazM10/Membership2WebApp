@@ -1,0 +1,12 @@
+﻿@using Membership2WebApp.Models
+@model IEnumerable<Membership2WebApp.Models.Customer>
+@{
+    ViewBag.Title = "Linq_test";
+}
+
+<h2>Linq_test</h2>
+
+@foreach (Customer c in Model)
+{
+    <h4>@c.Name</h4>
+}

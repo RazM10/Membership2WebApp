@@ -9,44 +9,34 @@ using Membership2WebApp.ViewModels;
 
 namespace Membership2WebApp.Controllers
 {
-    public class CustomerController : Controller
-    {
-        private ApplicationDbContext _context;
+	public class CustomerController : Controller
+	{
+		private ApplicationDbContext _context;
 
-        public CustomerController()
-        {
-            _context=new ApplicationDbContext();
-        }
+		public CustomerController()
+		{
+			_context=new ApplicationDbContext();
+		}
 
-        protected override void Dispose(bool disposing)
-        {
-            _context.Dispose();
-        }
+		protected override void Dispose(bool disposing)
+		{
+			_context.Dispose();
+		}
 
-        //
-        // GET: /Customer/
-        public ActionResult Index()
-        {
-            //var c = _context.Customers.ToList();
-            var c = _context.Customers.Include(x => x.MembershipType).ToList();
-            return View(c);
-        }
+		//
+		// GET: /Customer/
+		public ActionResult Index()
+		{
+			//var c = _context.Customers.ToList();
+			var c = _context.Customers.Include(x => x.MembershipType).ToList();
+			return View(c);
+		}
 
-        public ActionResult Index_Two()
-        {
-            return View();
-        }
+		public ActionResult Index_Two()
+		{
+			return View();
+		}
 
-        public ActionResult Edit(int? id)
-        {
-            var customer = _context.Customers.SingleOrDefault(x => x.Id == id);
-            var viewModel=new CustomerMshipViewModel()
-            {
-                Customer = customer,
-                MembershipTypes = _context.MembershipTypes.ToList()
-            };
-            return View("CustomerForm",viewModel);
-        }
 
         public ActionResult New()
         {
@@ -58,32 +48,57 @@ namespace Membership2WebApp.Controllers
             };
             return View("CustomerForm",viewModel);
         }
+						   where s.MembershipTypeId == 2
 
-        [HttpPost]
-        public ActionResult Save(Customer customer)
-        {
-            if (!ModelState.IsValid)
-            {
-                var customerViewModel = new CustomerMshipViewModel()
-                {
-                    Customer = customer,
-                    MembershipTypes = _context.MembershipTypes.ToList()
-                };
-                return View("CustomerForm", customerViewModel);
+			return View(result2);
 
-            }
-            if (customer.Id == 0)
-                _context.Customers.Add(customer);
-            else
-            {
-                var customerInDb = _context.Customers.Single(x => x.Id == customer.Id);
+		public ActionResult Edit(int? id)
+		{
+			var customer = _context.Customers.SingleOrDefault(x => x.Id == id);
+			var viewModel=new CustomerMshipViewModel()
+			{
+				Customer = customer,
+				MembershipTypes = _context.MembershipTypes.ToList()
+			};
+			return View("CustomerForm",viewModel);
+		}
 
-                customerInDb.Name = customer.Name;
-                customerInDb.MembershipTypeId = customer.MembershipTypeId;
-            }
+		public ActionResult New()
+		{
+			var membershipType = _context.MembershipTypes.ToList();
+			var viewModel = new CustomerMshipViewModel()
+			{
+				Customer = new Customer(),
+				MembershipTypes = membershipType
+			};
+			return View("CustomerForm",viewModel);
+		}
 
-            _context.SaveChanges();
-            return RedirectToAction("Index", "Customer");
-        }
+		[HttpPost]
+		public ActionResult Save(Customer customer)
+		{
+			if (!ModelState.IsValid)
+			{
+				var customerViewModel = new CustomerMshipViewModel()
+				{
+					Customer = customer,
+					MembershipTypes = _context.MembershipTypes.ToList()
+				};
+				return View("CustomerForm", customerViewModel);
+
+			}
+			if (customer.Id == 0)
+				_context.Customers.Add(customer);
+			else
+			{
+				var customerInDb = _context.Customers.Single(x => x.Id == customer.Id);
+
+				customerInDb.Name = customer.Name;
+				customerInDb.MembershipTypeId = customer.MembershipTypeId;
+			}
+
+			_context.SaveChanges();
+			return RedirectToAction("Index", "Customer");
+		}
 	}
 }
