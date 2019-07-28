@@ -38,19 +38,17 @@ namespace Membership2WebApp.Controllers
 		}
 
 
-        public ActionResult New()
-        {
-            var membershipType = _context.MembershipTypes.ToList();
-            var viewModel = new CustomerMshipViewModel()
-            {
-                Customer = new Customer(),
-                MembershipTypes = membershipType
-            };
-            return View("CustomerForm",viewModel);
-        }
+		public ActionResult Linq_test()
+		{
+			var result = _context.Customers.Where(c => c.MembershipTypeId == 2).ToList();
+			var result2 = (from s in _context.Customers 
 						   where s.MembershipTypeId == 2
+						   select s
+						   ).ToList();
+            //where s.MembershipTypeId.Equals(2)
 
 			return View(result2);
+		}
 
 		public ActionResult Edit(int? id)
 		{
