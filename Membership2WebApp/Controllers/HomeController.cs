@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace Membership2WebApp.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         public ActionResult Index()
