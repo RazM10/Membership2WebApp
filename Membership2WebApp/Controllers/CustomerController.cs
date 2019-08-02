@@ -25,6 +25,7 @@ namespace Membership2WebApp.Controllers
 
 		//
 		// GET: /Customer/
+		[Authorize]
 		public ActionResult Index()
 		{
 			//var c = _context.Customers.ToList();
@@ -32,6 +33,7 @@ namespace Membership2WebApp.Controllers
 			return View(c);
 		}
 
+        [Authorize]
 		public ActionResult Index_Two()
 		{
 			return View();
@@ -45,7 +47,7 @@ namespace Membership2WebApp.Controllers
 						   where s.MembershipTypeId == 2
 						   select s
 						   ).ToList();
-            //where s.MembershipTypeId.Equals(2)
+			//where s.MembershipTypeId.Equals(2)
 
 			return View(result2);
 		}
