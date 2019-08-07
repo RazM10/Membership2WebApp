@@ -1,0 +1,75 @@
+﻿@using Membership2WebApp.Models
+@model Membership2WebApp.ViewModels.CustomerMshipViewModel
+@{
+    ViewBag.Title = "CustomerForm_Two";
+}
+
+<h2>CustomerForm Two</h2>
+
+@using (Html.BeginForm("Save", "Customer",FormMethod.Post,new {id="infoForm"}))
+{
+@*<form method="POST" id="infoForm">*@
+    <table class="table table-bordered table-hover">
+        <tr>
+            <td>
+                <label for="Name">Name</label>
+            </td>
+            <td>
+                <input class="form-control" id="Name" name="Name" type="text" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="MembershipTypeId">Membership Type</label>
+            </td>
+            <td>
+                <select class="form-control" id="MembershipTypeId" name="MembershipTypeId">
+                    <option value="">--Select--</option>
+                    @foreach (MembershipType category in Model.MembershipTypes)
+                    {
+                        <option value="@category.Id">@category.Name</option>
+                    }
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" class="btn btn-primary" />
+            </td>
+        </tr>
+    </table>
+@*</form>*@
+}
+
+
+
+
+@section scripts
+{
+    <script src="~/Scripts/ValidationExtra/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/ValidationExtra/jquery.validate.js"></script>
+
+    <script>
+        $("#infoForm").validate({
+            rules: {
+                Name: {
+                    required: true,
+                    maxlength: 15,
+                    minlength: 4
+                },
+                MembershipTypeId: "required"
+
+            },
+            messages: {
+                Name: {
+                    required: "Please enter Name",
+                    maxlength: "Name can't exceed 15 characters",
+                    minlength: "Name minimum length 4"
+                },
+                MembershipTypeId: "Please select Membership Type"
+
+            }
+        });
+    </script>
+}

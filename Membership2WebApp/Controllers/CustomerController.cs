@@ -33,10 +33,12 @@ namespace Membership2WebApp.Controllers
 			return View(c);
 		}
 
-        [Authorize]
+		[Authorize]
 		public ActionResult Index_Two()
 		{
-			return View();
+			if (User.IsInRole("CanManageAdmin"))
+				return View("Index");
+			return View("Index_Two");
 		}
 
 
@@ -71,8 +73,10 @@ namespace Membership2WebApp.Controllers
 				Customer = new Customer(),
 				MembershipTypes = membershipType
 			};
-			return View("CustomerForm",viewModel);
+			//return View("CustomerForm",viewModel);
+			return View("CustomerForm_Two",viewModel);
 		}
+
 
 		[HttpPost]
 		public ActionResult Save(Customer customer)

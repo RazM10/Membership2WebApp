@@ -82,6 +82,11 @@ namespace Membership2WebApp.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    //var roleStore=new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    //var roleManager=new RoleManager<IdentityRole>(roleStore);
+                    //await roleManager.CreateAsync(new IdentityRole("CanManageAdmin"));
+                    //await UserManager.AddToRoleAsync(user.Id, "CanManageAdmin");
+
                     await SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }
