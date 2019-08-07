@@ -46,10 +46,14 @@
 
             $("#customers").on("click", ".js-delete", function() {
                 var button = $(this);
+                var varId = button.attr("customer-id");
+                var varId2 = 2;
                 bootbox.confirm("Want to Delete?", function(result) {
                     if (result) {
                         $.ajax({
-                            url: "/api/customer/" + button.attr("customer-id"),
+                            //url: "/api/customer/" + button.attr("customer-id"),
+                            //url: "/api/customer/DeleteCustomer?id=" +varId+"&id2="+varId2 ,
+                            url: "/api/customer/deleteCustomer?id=" + button.attr("customer-id"),
                             method: "DELETE",
                             success: function() {
                                 table.row(button.parents("tr")).remove().draw();
