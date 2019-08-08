@@ -204,11 +204,16 @@
     <Compile Include="Migrations\201906161731529_v5AddAnnotationAtCustomer.Designer.cs">
       <DependentUpon>201906161731529_v5AddAnnotationAtCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908080455325_v6AddMovieClass.cs" />
+    <Compile Include="Migrations\201908080455325_v6AddMovieClass.Designer.cs">
+      <DependentUpon>201908080455325_v6AddMovieClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
+    <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CustomerMshipViewModel.cs" />
@@ -468,6 +473,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906161731529_v5AddAnnotationAtCustomer.resx">
       <DependentUpon>201906161731529_v5AddAnnotationAtCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908080455325_v6AddMovieClass.resx">
+      <DependentUpon>201908080455325_v6AddMovieClass.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
