@@ -208,6 +208,10 @@
     <Compile Include="Migrations\201908080455325_v6AddMovieClass.Designer.cs">
       <DependentUpon>201908080455325_v6AddMovieClass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908080755244_v7AddAddDateInMovieClass.cs" />
+    <Compile Include="Migrations\201908080755244_v7AddAddDateInMovieClass.Designer.cs">
+      <DependentUpon>201908080755244_v7AddAddDateInMovieClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -476,6 +480,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908080455325_v6AddMovieClass.resx">
       <DependentUpon>201908080455325_v6AddMovieClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908080755244_v7AddAddDateInMovieClass.resx">
+      <DependentUpon>201908080755244_v7AddAddDateInMovieClass.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

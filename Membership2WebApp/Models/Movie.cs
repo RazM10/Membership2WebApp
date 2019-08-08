@@ -13,5 +13,7 @@ namespace Membership2WebApp.Models
         public string Name { get; set; }
         [Required]
         public DateTime ReleaseDate { get; set; }
+
+        public DateTime AddDate { get; set; }
     }
 }
