@@ -179,6 +179,7 @@
     <Compile Include="Controllers\Api\CustomerController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Dtos\CustomerDto.cs" />
     <Compile Include="Dtos\MembershipTypeDto.cs" />
     <Compile Include="Global.asax.cs">
@@ -225,6 +226,8 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\cssExtra\bootstrap-datepicker.min.css" />
+    <Content Include="Content\cssExtra\bootstrap.min.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.min.css" />
     <Content Include="Content\DataTables\css\autoFill.dataTables.css" />
@@ -418,6 +421,8 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\ValidationExtra\bootstrap-datepicker.min.js" />
+    <Content Include="Scripts\ValidationExtra\bootstrap.min.js" />
     <Content Include="Scripts\ValidationExtra\jquery-3.3.1.js" />
     <Content Include="Scripts\ValidationExtra\jquery.validate.js" />
     <Content Include="Scripts\_references.js" />
@@ -460,6 +465,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
+    <Content Include="Views\Movie\New.cshtml" />
+    <Content Include="Views\Movie\Index.cshtml" />
     <None Include="Views\Shared\Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>

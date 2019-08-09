@@ -1,0 +1,47 @@
+﻿@model Membership2WebApp.Models.Movie
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>New</h2>
+
+@section style{
+    
+    <link href="~/Content/cssExtra/bootstrap-datepicker.min.css" rel="stylesheet" />
+    <link href="~/Content/cssExtra/bootstrap.min.css" rel="stylesheet" />
+}
+
+@using (Html.BeginForm("Save", "Movie"))
+{
+    @Html.ValidationSummary(true, "Please fix the Errors")
+    <div class="form-group">
+        @Html.LabelFor(x => x.Name)
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+        @*@Html.ValidationMessageFor(x => x.Customer.Name)*@
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.ReleaseDate)
+        @Html.TextBoxFor(x => x.ReleaseDate, new { @class = "form-control", name = "ReleaseDate", id = "ReleaseDate" })
+        @*@Html.ValidationMessageFor(x => x.Customer.MembershipTypeId)*@
+    </div>
+
+    @*@Html.HiddenFor(x => x.Customer.Id)*@
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+
+@section scripts
+{
+    <script src="~/Scripts/ValidationExtra/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/ValidationExtra/bootstrap-datepicker.min.js"></script>
+    <script src="~/Scripts/ValidationExtra/bootstrap.min.js"></script>
+    <script src="~/Scripts/ValidationExtra/jquery.validate.js"></script>
+    
+    <script>
+        $('#ReleaseDate').datepicker({
+            daysOfWeekHighlighted: "5",
+            autoclose: true,
+            format: "yyyy-mm-dd"
+        });
+    </script>
+}
