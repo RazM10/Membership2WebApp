@@ -58,7 +58,6 @@ E:\Files\bitm c\bitm cls\MySelf\Vidly\Membership2WebApp\Membership2WebApp\bin\Mi
 E:\Files\bitm c\bitm cls\MySelf\Vidly\Membership2WebApp\Membership2WebApp\bin\Microsoft.Owin.Security.Google.xml
 E:\Files\bitm c\bitm cls\MySelf\Vidly\Membership2WebApp\Membership2WebApp\bin\Microsoft.Owin.Security.Twitter.xml
 E:\Files\bitm c\bitm cls\MySelf\Vidly\Membership2WebApp\Membership2WebApp\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-E:\Files\bitm c\bitm cls\MySelf\Vidly\Membership2WebApp\Membership2WebApp\obj\Debug\Membership2WebApp.csprojResolveAssemblyReference.cache
 E:\Files\bitm c\bitm cls\MySelf\Vidly\Membership2WebApp\Membership2WebApp\obj\Debug\Membership2WebApp.Migrations.v1.resources
 E:\Files\bitm c\bitm cls\MySelf\Vidly\Membership2WebApp\Membership2WebApp\obj\Debug\Membership2WebApp.Migrations.v2CusAdd.resources
 E:\Files\bitm c\bitm cls\MySelf\Vidly\Membership2WebApp\Membership2WebApp\obj\Debug\Membership2WebApp.Migrations.v3MemTypeAdd.resources

@@ -1,0 +1,133 @@
+﻿@model IEnumerable<Membership2WebApp.Models.Movie>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Movies</h2>
+
+
+
+<!--Modal button-->
+<button class="btn btn-success" data-toggle="modal" data-target="#modal1" data-backdrop="false" data-keyboard="false">Click for Modal</button>
+<!--Modal button End-->
+
+<!--Form-->
+@Html.ActionLink("Create New", "New", "Movie", new { @class = "btn btn-primary" })
+<table id="movies" class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Release Date</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody id="tableBody">
+    @foreach (var c in Model)
+    {
+        <tr>
+            @*<td>@c.Name</td>*@
+            <td>@Html.ActionLink(c.Name, "Index", "Movie", new { id = c.Id }, null)</td>
+            <td>@c.ReleaseDate</td>
+            <td><button data-customer-id="@c.Id" class="btn-link">Delete</button></td>
+        </tr>
+    }
+    </tbody>
+</table>
+<!--Form end-->
+
+
+<!--Modal start--> 
+
+<div class="modal" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModal1Label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" id="btnCloseModal" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <p>One fine body&hellip;</p>
+                <form>
+                    <div class="form-group">
+                        <label for="Name">Name</label>
+                        <input type="text" class="form-control" id="Name" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="ReleaseDate">Password</label>
+                        <input type="text" class="form-control" id="ReleaseDate" placeholder="ReleaseDate">
+                    </div>
+                    <button type="button" id="btnSave" class="btn btn-default">Submit</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                @*<button type="button" class="btn btn-primary">Save changes</button>*@
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<!--Modal end-->
+
+@section scripts{
+    
+    <script src="~/Scripts/ValidationExtra/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/ValidationExtra/bootstrap.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            $("#btnSave").click(function() {
+                var name = $("#Name").val();
+                var date = $("#ReleaseDate").val();
+
+                var json = { name: name, date: date };
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("SaveJson", "Movie")',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(json),
+                    success: function(data) {
+                        $("#tableBody").empty();
+                        //$("#movies").append('<thead><tr><th>Name</th><th>Discount</th></tr></thead>');
+                        $("#modal1").modal('hide');
+                        //$(".modal-backdrop .in").hide();
+                        //$('body').removeClass('modal-open');
+                        //$(".modal-backdrop .show").css('opacity', '1');
+                        //$(".modal-backdrop").css('z-index', '0');
+                        //$('body').css("background-color", "white");
+                        //$("#modal1").hide();
+                        //$("#modal1").remove();
+                        //$("#btnCloseModal").trigger("click");
+                        $.each(data, function (key, value) {
+                            //var d = value.ReleaseDate.toString();
+                            //var dd = d.split(' ').join(",");
+
+
+                            //var dateObj = new Date(parseInt(d));
+                            //var formattedDate = (dateObj.getMonth() + 1) + "/" + (dateObj.getDate() + 1) + "/" + dateObj.getFullYear();
+
+                            //var a = moment(d);
+                            //a.format("MMM Do YY");
+
+                            //var currentTime = new Date(parseInt(d));
+                            //var y = currentTime.getFullYear();
+                            //var d1 = Date.parse(d);
+                            //var d2 = d1.toString("dd/mm/yyyy HH:mm:ss GMT");
+
+                            //var parsedDate = $.format.parseDate(d);
+                            
+                            //var date = '1982-10-15T01:10:20+02:00';
+
+                            //var parsedDate = $.format.parseDate(date);
+                            //var d2 = d.toLocaleString();
+                            $("#tableBody").append("<tr><td>" + value.Name + "</td><td>" + value.RDate + "</td><td>Delete</td></tr>");
+                        });
+                    }
+                });
+
+            });
+        });
+    </script>
+}

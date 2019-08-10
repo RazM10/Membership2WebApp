@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Membership2WebApp.Models;
+using Membership2WebApp.ViewModels;
 
 namespace Membership2WebApp.Controllers
 {
@@ -58,5 +59,35 @@ namespace Membership2WebApp.Controllers
             //ViewBag.msg = "Save Successful";
             return RedirectToAction("Index", "Movie");
         }
+
+        public JsonResult SaveJson(string name, string date)
+        {
+            Movie movie=new Movie()
+            {
+                Name = name,
+                ReleaseDate = Convert.ToDateTime(date),
+                AddDate = DateTime.Now
+            };
+            _context.Movies.Add(movie);
+            _context.SaveChanges();
+
+            var movies = _context.Movies.ToList();
+
+            List<MovieViewModel> movieViewModels=new List<MovieViewModel>();
+            foreach (Movie movie1 in movies)
+            {
+                MovieViewModel movieViewModel=new MovieViewModel()
+                {
+                    Id = movie1.Id,
+                    Name = movie1.Name,
+                    RDate = movie1.ReleaseDate.ToString("yyyy-MM-dd"),
+                    ADate = movie1.AddDate.ToString("yyyy-MM-dd")
+                };
+                movieViewModels.Add(movieViewModel);
+            }
+
+            return Json(movieViewModels);
+        }
+
     }
 }

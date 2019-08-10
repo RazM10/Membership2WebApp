@@ -222,6 +222,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CustomerMshipViewModel.cs" />
+    <Compile Include="ViewModels\MovieViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -424,7 +425,10 @@
     <Content Include="Scripts\ValidationExtra\bootstrap-datepicker.min.js" />
     <Content Include="Scripts\ValidationExtra\bootstrap.min.js" />
     <Content Include="Scripts\ValidationExtra\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-dateformat.js" />
+    <Content Include="Scripts\ValidationExtra\jquery-dateformat.js" />
     <Content Include="Scripts\ValidationExtra\jquery.validate.js" />
+    <Content Include="Scripts\ValidationExtra\moment.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
