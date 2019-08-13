@@ -33,13 +33,20 @@ namespace Membership2WebApp.Controllers
             var sMovies = from m in movies
                 where m.ReleaseDate >= start && m.ReleaseDate <= end
                 select m;
-            return View(sMovies);
+            return View(movies);
 		}
 
 		public ActionResult New()
 		{
-            return View();
+            Movie movie=new Movie();
+            return View(movie);
 		}
+
+        public ActionResult Edit(int id)
+        {
+            Movie movie = _context.Movies.SingleOrDefault(x => x.Id == id);
+            return View("New", movie);
+        }
 
 		[HttpPost]
 		public ActionResult Save(Movie movie)
@@ -53,7 +60,13 @@ namespace Membership2WebApp.Controllers
             
             if (movie.Id == 0)
                 _context.Movies.Add(movie);
+            else
+            {
+                Movie movieInDb = _context.Movies.Single(x => x.Id == movie.Id);
 
+                movieInDb.Name = movie.Name;
+                movieInDb.ReleaseDate = movie.ReleaseDate;
+            }
 
             _context.SaveChanges();
             //ViewBag.msg = "Save Successful";
@@ -71,12 +84,41 @@ namespace Membership2WebApp.Controllers
             _context.Movies.Add(movie);
             _context.SaveChanges();
 
+            //just for show
             var movies = _context.Movies.ToList();
 
             List<MovieViewModel> movieViewModels=new List<MovieViewModel>();
             foreach (Movie movie1 in movies)
             {
                 MovieViewModel movieViewModel=new MovieViewModel()
+                {
+                    Id = movie1.Id,
+                    Name = movie1.Name,
+                    RDate = movie1.ReleaseDate.ToString("yyyy-MM-dd"),
+                    ADate = movie1.AddDate.ToString("yyyy-MM-dd")
+                };
+                movieViewModels.Add(movieViewModel);
+            }
+
+            return Json(movieViewModels);
+        }
+
+        public JsonResult DeleteJson(int id)
+        {
+            Movie movieInDb = _context.Movies.SingleOrDefault(c => c.Id == id);
+            if (movieInDb != null)
+            {
+                _context.Movies.Remove(movieInDb);
+                _context.SaveChanges();
+            }
+
+            //just for show
+            var movies = _context.Movies.ToList();
+
+            List<MovieViewModel> movieViewModels = new List<MovieViewModel>();
+            foreach (Movie movie1 in movies)
+            {
+                MovieViewModel movieViewModel = new MovieViewModel()
                 {
                     Id = movie1.Id,
                     Name = movie1.Name,

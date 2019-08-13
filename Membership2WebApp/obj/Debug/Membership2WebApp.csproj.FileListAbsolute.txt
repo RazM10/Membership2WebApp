@@ -68,3 +68,4 @@ E:\Files\bitm c\bitm cls\MySelf\Vidly\Membership2WebApp\Membership2WebApp\obj\De
 E:\Files\bitm c\bitm cls\MySelf\Vidly\Membership2WebApp\Membership2WebApp\obj\Debug\Membership2WebApp.pdb
 E:\Files\bitm c\bitm cls\MySelf\Vidly\Membership2WebApp\Membership2WebApp\obj\Debug\Membership2WebApp.Migrations.v6AddMovieClass.resources
 E:\Files\bitm c\bitm cls\MySelf\Vidly\Membership2WebApp\Membership2WebApp\obj\Debug\Membership2WebApp.Migrations.v7AddAddDateInMovieClass.resources
+E:\Files\bitm c\bitm cls\MySelf\Vidly\Membership2WebApp\Membership2WebApp\obj\Debug\Membership2WebApp.csprojResolveAssemblyReference.cache

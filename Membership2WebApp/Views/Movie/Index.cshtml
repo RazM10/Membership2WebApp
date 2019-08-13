@@ -26,14 +26,23 @@
     {
         <tr>
             @*<td>@c.Name</td>*@
-            <td>@Html.ActionLink(c.Name, "Index", "Movie", new { id = c.Id }, null)</td>
+            @*<td>@Html.ActionLink(c.Name, "Index", "Movie", new { id = c.Id }, null)</td>*@
+            <td><a href='@Url.Action("Edit","Movie",new {id=c.Id})'>@c.Name</a></td>
             <td>@c.ReleaseDate</td>
-            <td><button data-customer-id="@c.Id" class="btn-link">Delete</button></td>
+            <td><button data-movie-id="@c.Id" class="btn-link js-delete" id="btnDelete">Delete</button></td>
+
         </tr>
     }
     </tbody>
 </table>
 <!--Form end-->
+
+<!---Test Form-->
+<h2>Test Form</h2>
+<form action='@Url.Action("Index", "Movie")' method="post">
+    <input type="submit" value="submit"/>
+</form>
+<!---Test Form End-->
 
 
 <!--Modal start--> 
@@ -71,12 +80,60 @@
 <!--Modal end-->
 
 @section scripts{
-    
+
     <script src="~/Scripts/ValidationExtra/jquery-3.3.1.js"></script>
     <script src="~/Scripts/ValidationExtra/bootstrap.min.js"></script>
-    
+
     <script>
-        $(document).ready(function() {
+        function test() {
+            //console.log("Ok");
+            $(document).ready(function() {
+                $("#tableBody .js-delete").click(function() {
+                    var b = confirm("are you sure?");
+                    if (b) {
+                        var button = $(this);
+                        var id = button.attr("data-movie-id");
+                        var json = { id: id };
+
+                        $.ajax({
+                            type: "POST",
+                            url: '@Url.Action("DeleteJson", "Movie")',
+                            contentType: "application/json; charset=utf-8",
+                            data: JSON.stringify(json),
+                            success: function(data) {
+                                $("#tableBody").empty();
+                                $.each(data,
+                                    function(key, value) {
+                                        var html2 = '<button data-movie-id="' +
+                                            value.Id +
+                                            '" class="btn-link js-delete" id="btnDelete" onclick="test()">Delete</button>';
+                                        var html = '<a href="@Url.Action("Edit")?id=' +
+                                            value.Id +
+                                            '">' +
+                                            value.Name +
+                                            '</a>';
+                                        $("#tableBody").append("<tr><td>" +
+                                            html +
+                                            "</td>  <td>" +
+                                            value.RDate +
+                                            "</td><td>" +
+                                            html2 +
+                                            "</td></tr>");
+                                    });
+                            }
+                        });
+                    }
+                    else
+                    {
+                        console.log("Ok, not delete");
+                    }
+                    
+                });
+            });
+        }
+
+        $(document).ready(function () {
+
             $("#btnSave").click(function() {
                 var name = $("#Name").val();
                 var date = $("#ReleaseDate").val();
@@ -90,6 +147,8 @@
                     data: JSON.stringify(json),
                     success: function(data) {
                         $("#tableBody").empty();
+                        $("#Name").val("");
+                        $("#ReleaseDate").val("");
                         //$("#movies").append('<thead><tr><th>Name</th><th>Discount</th></tr></thead>');
                         $("#modal1").modal('hide');
                         //$(".modal-backdrop .in").hide();
@@ -122,12 +181,39 @@
 
                             //var parsedDate = $.format.parseDate(date);
                             //var d2 = d.toLocaleString();
-                            $("#tableBody").append("<tr><td>" + value.Name + "</td><td>" + value.RDate + "</td><td>Delete</td></tr>");
+                            var html2 = '<button data-movie-id="' + value.Id + '" class="btn-link js-delete" id="btnDelete" onclick="test()">Delete</button>';
+                            var r = $('<input type="button" value="Delete" class="btn-link js-delete" data-movie-id="'+value.Id+'" />');
+                            var html='<a href="@Url.Action("Edit")?id='+value.Id+'">'+value.Name+'</a>';
+                            $("#tableBody").append("<tr><td>" + html + "</td>  <td>" + value.RDate + "</td><td>"+html2+"</td></tr>");
+                            
                         });
                     }
                 });
 
             });
+            $("#tableBody .js-delete").click(function () {
+
+                var button = $(this);
+                var id = button.attr("data-movie-id");
+                var json = { id: id };
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("DeleteJson", "Movie")',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(json),
+                    success: function(data) {
+                        $("#tableBody").empty();
+                        $.each(data, function (key, value) {
+                            var html2 = '<button data-movie-id="' + value.Id + '" class="btn-link js-delete" id="btnDelete" onclick="test()">Delete</button>';
+                            var html = '<a href="@Url.Action("Edit")?id=' + value.Id + '">' + value.Name + '</a>';
+                            $("#tableBody").append("<tr><td>" + html + "</td>  <td>" + value.RDate + "</td><td>"+html2+"</td></tr>");
+                        });
+                    }
+                });
+            });
+
+            
         });
     </script>
 }
