@@ -9,8 +9,7 @@ using Membership2WebApp.ViewModels;
 
 namespace Membership2WebApp.Controllers
 {
-	[AllowAnonymous]
-	public class MovieController : Controller
+    public class MovieController : Controller
 	{
         private ApplicationDbContext _context;
 
@@ -55,7 +54,10 @@ namespace Membership2WebApp.Controllers
             //movie.ReleaseDate = Convert.ToDateTime(n);
             //var d = DateTime.Now.ToString("yyyy-mm-dd");
             //var d2=movie.ReleaseDate.ToString("yyyy-MM-dd");
-            
+            if (!ModelState.IsValid)
+            {
+                return View("New", movie);
+            }
             movie.AddDate = DateTime.Now;
             
             if (movie.Id == 0)
